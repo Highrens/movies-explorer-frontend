@@ -1,0 +1,190 @@
+.header {
+    width: 100%;
+}
+
+.header__container{
+    margin: auto;
+    display: flex;
+    width: 90%;
+    max-width: 1140px;
+    min-height: 74px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_green{
+    background-color: #073042;
+}
+
+.header__left-column{
+    display: flex;
+    align-items: center;
+}
+.header__right-column{
+    display: flex;
+    align-items: center;
+}
+
+.header__logo{
+    width: 38px;
+    transition: .5s;
+}
+
+.header__logo:hover{
+    width: 45px;
+}
+
+
+.header__nav{
+ margin-left: 44px;
+}
+
+.header__navigation-link{
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+
+    margin-right: 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.header__navigation-link:hover{
+    font-size: 16px;
+    color: #878787;
+}
+
+.header__navigation-link_selected{
+    font-weight: 500;
+}
+
+.header__account-button{
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    
+    display: flex;
+    align-items: center;
+    border: none;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: .5s;
+}
+
+.header__account-button:hover{
+    font-size: 17px;
+    color: #878787;
+    .header__account-icon {
+        width: 35px;
+        margin-left: 18px;
+    }
+}
+
+.header__account-icon{
+    width: 30px;
+    margin-left: 13px;
+
+    transition: .5s;
+}
+
+.header__register-button{
+    text-decoration: none;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #FFFFFF;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: .5s;
+    
+}
+
+.header__register-button:hover{
+    font-size: 16px;
+    color: #878787;
+}
+
+.header__login-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    text-decoration: none;
+
+    margin-left: 30px;
+    min-width: 76px;
+    min-height: 32px;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    
+    color: #000;
+    border: none;
+    background: #3DDC84;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+.header__login-button:hover{
+    min-width: 79px;
+    min-height: 35px;
+    font-size: 15px;
+    
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .header__account-button{
+        display: none;
+    }
+
+
+    .header__nav{
+        display: none;
+    }
+
+    .header__account-button_burgershow{
+        display: flex;
+        margin-top: auto;
+        margin-bottom: 92px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header__login-button{
+        min-width: 54px;
+        min-height: 26px;
+
+        margin-left: 14px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    .header__register-button{
+        font-size: 10px;
+        line-height: 16px;
+    }
+    
+    .header__nav{
+        display: none;
+    }
+
+    .header__account-button_burgershow{
+        display: flex;
+        margin-top: auto;
+        margin-bottom: 92px;
+    }
+}
+

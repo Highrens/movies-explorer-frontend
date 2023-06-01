@@ -1,0 +1,40 @@
+.morebutton-container{
+    width: 100%;
+    min-height: 166px;
+    display: flex;
+    justify-content: center;
+}
+
+.morebutton{
+    margin-top: 50px;
+    width: 90%;
+    max-width: 1140px;
+    height: 36px;
+    background: #2F2F2F;
+    border: none;
+    border-radius: 6px;
+
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    justify-content: center;
+
+    color: #FFFFFF;
+    transition: .5s;
+}
+
+.morebutton:hover{
+    font-size: 15px;
+    line-height: 18px;
+    width: 92%;
+    max-width: 1160px;
+    height: 40px;
+}
+
