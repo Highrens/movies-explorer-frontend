@@ -2,7 +2,7 @@ import './Techs.css';
 
 export function Techs (props) {
   return (
-      <div className="techs">
+      <section aria-label='techstack' className="techs">
         <div className="techs__content">
           <h2 className='techs__header'>Технологии</h2>
           <h1 className='techs__amount'>7 технологий</h1>
@@ -17,6 +17,6 @@ export function Techs (props) {
             <li className='techs__one-tech'>mongoDB</li>
           </ul>
         </div>
-    </div>
+    </section>
   );
 }

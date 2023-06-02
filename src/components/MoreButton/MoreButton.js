@@ -7,8 +7,8 @@ export function Morebutton (props) {
     }
 
     return (
-        <div className='morebutton-container'>
+        <section aria-label='more-button' className='morebutton-container'>
             <button className='morebutton' onClick={handleMoreButtonClick}>Еще</button>
-        </div>
+        </section>
     )
 }

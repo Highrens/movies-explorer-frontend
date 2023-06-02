@@ -26,9 +26,9 @@ export function Login(props) {
       title={"Рады видеть!"}
       onSubmit={handleLoginSubmit}
     >
-       <label className="input__placeholder" htmlFor ="rlogin-email">Email</label>
+       <label className="form__input-placeholder" htmlFor ="rlogin-email">Email</label>
         <input
-          type="Email"
+          type="email"
           id="login-email"
           placeholder=""
           name="Email"
@@ -37,7 +37,7 @@ export function Login(props) {
           onChange={handleEmailChange}
           required
         />
-        <label className="input__placeholder" htmlFor ="register-name">Пароль</label>
+        <label className="form__input-placeholder" htmlFor ="register-name">Пароль</label>
         <input
           type="password"
           id="register-password"
@@ -48,9 +48,10 @@ export function Login(props) {
           onChange={handlePasswordChange}
           required
         />
+        <button className="form__submit-button">Зарегистрироваться</button>
+        <h2 className="form__sign-in">Ещё не зарегистрированы? <Link to={'/sign-up'} className="form__sign-in-link">Регистрация</Link></h2>
     </Form>
-    <button className="form__submit-button">Зарегистрироваться</button>
-    <h2 className="form__sign-in">Ещё не зарегистрированы? <Link to={'/sign-up'} className="form__sign-in-link">Регистрация</Link></h2>
+   
     </>
   );
 }

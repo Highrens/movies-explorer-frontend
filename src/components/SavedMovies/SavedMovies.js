@@ -3,12 +3,12 @@ import { MoviesList } from '../MoviesList/MoviesList';
 
 import { moviesTest } from '../../constants/MovieTest';
 
-export function Movies (props){
+export function SavedMovies (props){
     return (
         <main className='main'>
             <Searchbar />
             <MoviesList 
-              movies={moviesTest}
+              movies={moviesTest.filter(movie => movie.saved === true)}
             />
         </main>
     )

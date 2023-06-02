@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import logo from '../../images/logo.svg';
-import account from '../../images/profile.svg'
+import account from '../../images/profile.svg';
 import './Header.css';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
@@ -42,10 +42,10 @@ export function Header(props) {
                 </> :
                     <>
                     <BurgerMenu currentUrl={currentUrl}/>
-                        <a className='header__account-button' href='profile'>
-                            Аккаунт
+                    <a className='header__account-button' href='profile'>
+                        Аккаунт
                             <img src={account} className='header__account-icon' alt='s'></img>
-                        </a>
+                    </a>
                     </>
                 }
           </div>

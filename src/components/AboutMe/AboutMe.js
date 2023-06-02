@@ -2,7 +2,7 @@ import './AboutMe.css';
 import photo from '../../images/20230130_134138.jpg';
 export function AboutMe(props) {
   return (
-    <div className="about-me">
+    <section className="about-me">
         <h2 className='about-me__header'>Студент</h2>
         <div className='about-me__two-coloumns'>
           <div className='about-me__coloumn'>
@@ -21,20 +21,26 @@ export function AboutMe(props) {
         </div>
         <h3 className='about-me__portfolio-header'>Портфолио</h3>
         <ul className='about-me__portfolio-list'>
-          <a className='about-me__portfolio-list-element' href='https://highrens.github.io/MeAndHer/' target="_blank"  rel="noreferrer">
-            <p className='about-me__portfolio-link' >Одностраничный сайт</p>
-            <p className='about-me__portfolio-link'>&#8599;</p>
-          </a>
-          <a className='about-me__portfolio-list-element' href='https://highrens.github.io/russian-travel/' target="_blank"  rel="noreferrer">
-            <p className='about-me__portfolio-link' >Адаптивный сайт</p>
-            <p className='about-me__portfolio-link'>&#8599;</p>
-          </a>
-          <a className='about-me__portfolio-list-element' href='https://welcometomesto.nomoredomains.monster/' target="_blank"  rel="noreferrer">
-            <p className='about-me__portfolio-link' >Одностраничное приложение</p>
-            <p className='about-me__portfolio-link'>&#8599;</p>
-          </a>
+          <li>
+            <a className='about-me__portfolio-list-element' href='https://highrens.github.io/MeAndHer/' target="_blank"  rel="noreferrer">
+              <p className='about-me__portfolio-link' >Одностраничный сайт</p>
+              <p className='about-me__portfolio-link'>&#8599;</p>
+            </a>
+          </li>
+          <li>
+            <a className='about-me__portfolio-list-element' href='https://highrens.github.io/russian-travel/' target="_blank"  rel="noreferrer">
+              <p className='about-me__portfolio-link' >Адаптивный сайт</p>
+              <p className='about-me__portfolio-link'>&#8599;</p>
+            </a>
+          </li>
+          <li>
+            <a className='about-me__portfolio-list-element' href='https://welcometomesto.nomoredomains.monster/' target="_blank"  rel="noreferrer">
+              <p className='about-me__portfolio-link' >Одностраничное приложение</p>
+              <p className='about-me__portfolio-link'>&#8599;</p>
+            </a>
+          </li>
         </ul>
-    </div>
+    </section>
   );
 }
 

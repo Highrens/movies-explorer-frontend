@@ -130,6 +130,7 @@
     }
     .about__two-columns{
         flex-direction: column;
+        margin-bottom: 4px
     }
     .about__column{
         max-width: 100%;
@@ -146,12 +147,9 @@
         margin-top: 16px;
         margin-bottom: 56px;
     }
-
+    
     .about__weeks-column{
         margin-bottom: 70px; 
-    }
-
-    .about__weeks-column{
         font-size: 11px;
         line-height: 13px;
         width: 31%;     

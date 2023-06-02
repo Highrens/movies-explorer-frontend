@@ -1,4 +1,4 @@
-.searchbar-container{
+.searchbar{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,11 +7,13 @@
 }
 
 
-.searchbar{
+.searchbar-container{
     display: flex;
     width: 90%;
     max-width: 1140px;
     margin-top: 70px;
+    border-bottom: solid 1px #424242;
+    padding-bottom: 13px;
 }
 
 .searchbar__input{
@@ -27,7 +29,7 @@
 
     background: none;
     border: none;
-    border-bottom: solid 1px #424242;
+
 }
 
 .searchbar__input:focus{
@@ -80,6 +82,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .searchbar{   
+    min-height: 237px;
+    }
+
     .searchbar__checkbox-name{
         margin-right: 16px;
     }

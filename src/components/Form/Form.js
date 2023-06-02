@@ -4,9 +4,9 @@ import logo from '../../images/logo.svg';
 
 export function Form(props) {
   return (
-    <div className="form">
+    <section aria-label="form" className="form">
       <a href='/'>
-        <img className="header__logo" src={logo} alt="Логотип Сайта movies" />
+        <img className="form__logo" src={logo} alt="Логотип Сайта movies" />
       </a>     
       <h2 className="form__title">{props.title}</h2>
       <form
@@ -16,6 +16,6 @@ export function Form(props) {
       >
         {props.children}
       </form>
-    </div>
+    </section>
   );
 }

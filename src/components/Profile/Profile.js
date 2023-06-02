@@ -3,7 +3,7 @@ import './Profile.css';
 export function Profile (props) {
 
     return (
-    <div className="profile">
+    <main aria-label='profile' className="profile">
         <h2 className='profile__title'>{"Привет, " + props.name + "!"}</h2>
         <div className='profile__info'>
             <div className='profile__info-part'>
@@ -17,7 +17,7 @@ export function Profile (props) {
         </div>
         <button className='profile__edit' onClick={props.handleProfileEdit}>Редактировать</button>
         <button className='profile__logout' onClick={props.handleLogout}>Выйти из аккаунта</button>
-    </div>
+    </main>
     );
   }
   

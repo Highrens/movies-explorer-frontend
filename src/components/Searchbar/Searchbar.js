@@ -10,10 +10,10 @@ export function Searchbar(props) {
       }
 
     return (
-        <div className="searchbar-container">
+        <section aria-label="searchbar" className="searchbar">
             <form
             onSubmit={props.onSubmit} 
-            className="searchbar">
+            className="searchbar-container">
                 <input
                 type="text"
                 id="search-input"
@@ -26,9 +26,9 @@ export function Searchbar(props) {
                 <button className="searchbar__button">Найти</button>             
             </form>
            <div className="searchbar__checkbox-container">
-                <ToggleCheckbox />
+                <ToggleCheckbox for={"shorts"} />
                 <label className="searchbar__checkbox-name" htmlFor="shorts">Короткометражки</label>
            </div>
-        </div>
+        </section>
     )
 }

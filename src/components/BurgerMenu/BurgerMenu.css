@@ -1,4 +1,4 @@
-.hamburger-menu{
+.menu{
     display: none;
 }
 
@@ -131,7 +131,7 @@
   }
 
   @media screen and (max-width: 800px) {
-    .hamburger-menu{
+    .menu{
         display: flex;
     }
 }

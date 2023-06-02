@@ -69,7 +69,8 @@
 .techs__stack{
     margin: 100px auto 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 90px);
+    grid-template-columns: repeat(auto-fit, 90px);
+    grid-auto-flow: dense;
     width: 100%;
     gap: 10px;
     list-style: none;
@@ -108,8 +109,9 @@
         min-height: 57px;
     }
     .techs__stack{
-        grid-template-columns: repeat(auto-fill, 84px);
+        grid-template-columns: repeat(auto-fit, 84px);
         margin-bottom: 90px;
+        
     }
 }
 

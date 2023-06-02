@@ -2,7 +2,7 @@ import './About.css';
 
 export function About(props) {
   return (
-    <div className="about">
+    <section title='about-site' className="about">
         <h2 className='about__header'>О проекте</h2>
         <div className='about__two-columns'>
             <div className='about__column'>
@@ -25,7 +25,7 @@ export function About(props) {
             </div>
             
         </div>
-    </div>
+    </section>
   );
 }
 

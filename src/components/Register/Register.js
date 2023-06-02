@@ -35,9 +35,9 @@ export function Register(props) {
     title={"Добро пожаловать!"}
     onSubmit={handleRegisterSubmit}
     >
-        <label className="input__placeholder" htmlFor="register-name">Имя</label>
+        <label className="form__input-placeholder" htmlFor="register-name">Имя</label>
         <input
-          type="Name"
+          type="text"
           id="register-name"
           placeholder=""
           name="Name"
@@ -46,7 +46,7 @@ export function Register(props) {
           onChange={handleNameChange}
           required
         />
-        <label className="input__placeholder" htmlFor="register-email">Email</label>
+        <label className="form__input-placeholder" htmlFor="register-email">Email</label>
         <input
           type="Email"
           id="register-email"
@@ -57,7 +57,7 @@ export function Register(props) {
           onChange={handleEmailChange}
           required
         />
-        <label className="input__placeholder" htmlFor="register-name">Пароль</label>
+        <label className="form__input-placeholder" htmlFor="register-name">Пароль</label>
         <input
           type="password"
           id="register-password"
@@ -68,10 +68,9 @@ export function Register(props) {
           onChange={handlePasswordChange}
           required
         />
-        
+        <button className="form__submit-button">Зарегистрироваться</button>
+        <h2 className="form__sign-in">Уже зарегистрированы? <Link to={'/sign-in'} className="form__sign-in-link">Войти</Link></h2>
     </Form>
-    <button className="form__submit-button">Зарегистрироваться</button>
-    <h2 className="form__sign-in">Уже зарегистрированы? <Link to={'/sign-in'} className="form__sign-in-link">Войти</Link></h2>
     </>
   );
 }

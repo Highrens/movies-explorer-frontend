@@ -68,6 +68,8 @@
     font-size: 14px;
     line-height: 16px;
     color: #fff;
+
+    height: 30px;
     
     display: flex;
     align-items: center;
@@ -78,16 +80,13 @@
 }
 
 .header__account-button:hover{
+    height: 35px;
     font-size: 17px;
     color: #878787;
-    .header__account-icon {
-        width: 35px;
-        margin-left: 18px;
-    }
 }
 
 .header__account-icon{
-    width: 30px;
+    height: 100%;
     margin-left: 13px;
 
     transition: .5s;
@@ -144,12 +143,39 @@
 }
 
 
+.menu__account-button{
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 92px;
+}
+
+.menu__account-button-link{
+    height: 30px;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    
+    display: flex;
+    align-items: center;
+    border: none;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: .5s;
+}
+
+.menu__account-button-link:hover{
+    height: 35px;
+    font-size: 17px;
+    color: #878787;
+}
 
 @media screen and (max-width: 800px) {
     .header__account-button{
         display: none;
     }
-
 
     .header__nav{
         display: none;
@@ -181,10 +207,5 @@
         display: none;
     }
 
-    .header__account-button_burgershow{
-        display: flex;
-        margin-top: auto;
-        margin-bottom: 92px;
-    }
 }
 

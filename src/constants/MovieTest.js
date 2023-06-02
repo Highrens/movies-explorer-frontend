@@ -1,15 +1,15 @@
 import img from '../images/movie_images/1.jpg';
-import zimg from '../images/movie_images/1 (1).png';
-import fimg from '../images/movie_images/1 (2).png';
-import simg from '../images/movie_images/1 (3).png';
-import timg from '../images/movie_images/1 (4).png';
-import foimg from '../images/movie_images/1 (5).png';
-import fiimg from '../images/movie_images/1 (6).png';
-import siimg from '../images/movie_images/1 (7).png';
-import seiimg from '../images/movie_images/1 (8).png';
-import egiimg from '../images/movie_images/1 (9).png';
-import niimg from '../images/movie_images/1 (10).png';
-import teimg from '../images/movie_images/1 (11).png';
+import zimg from '../images/movie_images/11.png';
+import fimg from '../images/movie_images/12.png';
+import simg from '../images/movie_images/13.png';
+import timg from '../images/movie_images/14.png';
+import foimg from '../images/movie_images/15.png';
+import fiimg from '../images/movie_images/16.png';
+import siimg from '../images/movie_images/17.png';
+import seiimg from '../images/movie_images/18.png';
+import egiimg from '../images/movie_images/19.png';
+import niimg from '../images/movie_images/110.png';
+import teimg from '../images/movie_images/111.png';
 
 export const moviesTest = [
     {
