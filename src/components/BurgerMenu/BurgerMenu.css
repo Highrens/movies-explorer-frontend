@@ -1,0 +1,149 @@
+.menu{
+    display: none;
+}
+
+#menu__toggle {
+    opacity: 0;
+  }
+  
+  #menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    right: 0;
+  }
+  
+  .menu__btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+  
+    width: 28px;
+    height: 28px;
+  
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+  
+    width: 100%;
+    height: 2px;
+  
+    background-color: #fff;
+  
+    transition-duration: .25s;
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
+  }
+  
+
+  .menu__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    right: -100%;
+  
+    width: 100%;
+    height: 100%;
+  
+    list-style: none;
+  
+    background-color: rgba(0, 0, 0, .3);
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  
+    transition-duration: .25s;
+    z-index: 1;
+  }
+  
+  .menu__nav{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+
+    width: 520px;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    background-color: #202020;
+  }
+
+  .menu__item {
+    display: block;
+    margin-bottom: 28px;
+    padding-bottom: 4px;
+    color: #333;
+  
+   
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+  
+    text-decoration: none;
+  
+    transition-duration: .25s;
+  }
+
+  .menu__item_first{
+    margin-top: 80px;
+  }
+
+  .menu__item:hover {
+    font-size: 21px;
+    color: #878787;
+  }
+
+  .menu__item_current{
+   border-bottom: #fff solid 2px;
+  }
+
+  @media screen and (max-width: 800px) {
+    .menu{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 500px) {
+  .menu__nav{
+      width: 100%;
+  }
+  .menu__item{
+    margin-bottom: 15px;
+  }
+  .menu__item_first{
+    margin-top: 144px;
+  }
+}
