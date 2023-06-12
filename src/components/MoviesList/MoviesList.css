@@ -1,5 +1,6 @@
 .movies-container{
     width: 100%;
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     flex-direction: column
@@ -11,7 +12,7 @@
     padding: 0;
       
     display: grid;
-    grid-template-columns: repeat(auto-fill, 360px);
+    grid-template-columns: repeat(auto-fit, 360px);
     justify-content: center;
     justify-items: center;
     gap: 32px 28px;
@@ -19,16 +20,25 @@
     list-style-type: none;
 }
 
+.movies__tip{
+    color: #8B8B8B;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+}
+
 @media screen and (max-width: 768px) {
     .movies{
-        grid-template-columns: repeat(auto-fill, 342px);
+        grid-template-columns: repeat(auto-fit, 342px);
         gap: 35px 24px;
     }
 }
 
 @media screen and (max-width: 500px) {
     .movies{
-        grid-template-columns: repeat(auto-fill, 271px);
+        grid-template-columns: repeat(auto-fit, 271px);
         gap: 16px;
     }
 }

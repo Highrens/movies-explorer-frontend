@@ -1,29 +1,46 @@
-import './MoviesList.css';
-import { Movie } from '../Movie/Movie';
-import { Morebutton } from '../MoreButton/MoreButton';
+import "./MoviesList.css";
+import { Movie } from "../Movie/Movie";
+import { Morebutton } from "../MoreButton/MoreButton";
 
-import Preloader from  '../Preloader/Preloader'
+import Preloader from "../Preloader/Preloader";
 
-export function MoviesList (props) {
+export function MoviesList(props) {
 
-    return (<>
-
-    <section aria-label='movies-container' className="movies-container">
-       <ul className='movies'>
-       {props.movies.map((data, i) => (
-            <Movie
-            key={i}
-            name={data.name}
-            duration={data.duration}
-            photo={data.photo}
-            saved={data.saved}
-            />
-          ))}
-       </ul>
-        {/* <Preloader /> */}
-    </section>
-      <Morebutton />
-    </>
-    );
+  function isMovieSaved(movie) {
+    return ( props.savedMovies.some((savedMovie) => savedMovie.movieId === movie.id)) 
   }
-  
+
+  function ToShow() {
+    if (props.tip !== "") {
+      return <h2 className="movies__tip">{props.tip}</h2>;
+    }
+    if (props.showPreloader) {
+      return <Preloader />;
+    }
+    if (props.movies !== null) {
+      return (
+        <ul className="movies">
+          {props.movies.map((data, i) => (
+            <Movie key={i}
+             saved={props.saved || isMovieSaved(data)} 
+             onMovieButtonCkick={props.onMovieButtonCkick}
+             movie={data} />
+          ))}
+        </ul>
+      );
+    }
+  }
+
+  return (
+    <>
+      <section aria-label="movies-container" className="movies-container">
+        {ToShow()}
+      </section>
+      {props.showMoreButton ? (
+        <Morebutton HandleClick={props.MoreButtonClick} />
+      ) : (
+        <></>
+      )}
+    </>
+  );
+}
