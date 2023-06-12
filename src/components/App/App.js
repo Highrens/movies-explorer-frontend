@@ -170,12 +170,10 @@ function App() {
   }
 
   function filterMovies() {
-    console.log('ыыыы');
     setMovieTip("");
 
     let AllMovies = JSON.parse(localStorage.getItem("AllMovies"));
     if (searchText === "") {
-      console.log('herer');
       setMovieTip("Нужно ввести ключевое слово");
       return AllMovies;
     }

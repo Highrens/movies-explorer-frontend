@@ -1,5 +1,5 @@
-// export const BASE_URL = 'https://api.iwillwatch.nomoredomains.monster';
- export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'https://api.iwillwatch.nomoredomains.monster';
+// export const BASE_URL = 'http://localhost:3001';
 
 const _getResponseData = (res) => {
   if (!res.ok) {
@@ -11,10 +11,10 @@ const _getResponseData = (res) => {
 export const register = ( name, password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
-    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify({name, password, email})
   })
   .then(_getResponseData); 
@@ -23,10 +23,10 @@ export const register = ( name, password, email) => {
 export const login = ( password, email) => {
     return fetch(`${BASE_URL}/signin`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({password, email})
     })
     .then(_getResponseData); 
