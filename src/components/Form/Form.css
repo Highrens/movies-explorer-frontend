@@ -31,10 +31,13 @@
     min-height: 405px;
     display:  flex;
     flex-direction: column;
+    
+    align-items: center;
 }
 
 .form__input-placeholder{
     
+    width: 100%;
     margin-bottom: 10px;
 
     font-family: 'Inter', 'Arial';
@@ -46,8 +49,9 @@
 }
 
 .form__input{
+    width: calc(100% - 30px);
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     min-height: 16px;
     background: #2F2F2F;
     border: none;
@@ -61,10 +65,34 @@
     color: #FFFFFF; 
 }
 
+.form__input:-webkit-autofill {
+    
+    -webkit-border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 0 50px #2F2F2F; /* цвет вашего фона */
+    -webkit-text-fill-color: rgb(255, 255, 255); /* цвет текста */
+}
+
+.form__input:last-of-type{
+    margin-bottom: 10px;
+}
+.form__input-error{
+    margin: 0 auto 10px;
+    width: 100%;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #EE3465;
+    text-align: start;
+}
+
 .form__submit-button{
+    
+    width: 100%;
     margin-top: auto;
-    margin-bottom: 0;
-    min-width: 396px;
+    margin-bottom: 0;   
     min-height: 45px;
 
     padding: 0;
@@ -84,9 +112,15 @@
     transition: .5s;
 }
 
+.form__submit-button:disabled{
+    background: #6a6a6a;
+}
 
-.form__submit-button:hover{
+
+.form__submit-button:not(:disabled):hover{
     font-size: 17px;
+    width: 110%;
+    min-height: 49px;
 }
 
 .form__sign-in{
@@ -113,6 +147,19 @@
 .form__sign-in-link:hover{
     color: #3972ce;
     font-size: 17px;
+}
+
+.form__error{
+    width: 100%;
+    margin: 0;
+    
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #EE3465;
 }
 
 @media screen and (max-width: 500px) {

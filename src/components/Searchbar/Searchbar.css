@@ -70,8 +70,8 @@
 }
 
 .searchbar__checkbox-name{
-
-    margin-left: 14px;
+    display: flex;
+    align-items: center;
     font-family: 'Inter', 'Arial';
     font-style: normal;
     font-weight: 400;

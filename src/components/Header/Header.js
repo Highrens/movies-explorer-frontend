@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
+import {LoggenInContext} from "../../contexts/CurrentUserContext";
 import logo from '../../images/logo.svg';
 import account from '../../images/profile.svg';
 import './Header.css';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
-const isLogin = true;
-
-
-
-
 export function Header(props) {
+
+    const loggenIn = React.useContext(LoggenInContext);
+    
     const [currentUrl, setCurrentUrl] = useState('');
     useEffect(() => {
         // Обновляем значение currentUrl при загрузке и изменении URL
@@ -22,30 +22,32 @@ export function Header(props) {
       <header className={currentUrl  === '/' ? "header header_green" : "header" }>
         <div className='header__container'>
             <div className='header__left-column'>
-                <a href='/'>
+                <Link to='/'>
                     <img className="header__logo" src={logo} alt="Логотип Сайта movies" />
-                </a>     
-                <nav className='header__nav'>
-                    <a href='movies' className='header__navigation-link header__navigation-link_selected'>Фильмы</a>
-                    <a href='saved-movies' className='header__navigation-link'>Сохраненные фильмы</a>
-                </nav>
+                </Link>     
+                {!loggenIn ? "" :
+                    <nav className='header__nav'>
+                        <Link to='/movies' className='header__navigation-link header__navigation-link_selected'>Фильмы</Link>
+                        <Link to='/saved-movies' className='header__navigation-link'>Сохраненные фильмы</Link>
+                    </nav>
+                }
             </div>
             <div className='header__right-column'>
-                {!isLogin ?
+                {!loggenIn ?
                 <>
-                    <a className='header__register-button'  href='sign-up'>
+                    <Link className='header__register-button'  to='/sign-up'>
                         Регистрация
-                    </a>
-                    <a className='header__login-button' href='sign-in'>
+                    </Link>
+                    <Link className='header__login-button' to='/sign-in'>
                         Войти
-                    </a>
+                    </Link>
                 </> :
                     <>
                     <BurgerMenu currentUrl={currentUrl}/>
-                    <a className='header__account-button' href='profile'>
+                    <Link className='header__account-button' to='/profile'>
                         Аккаунт
                             <img src={account} className='header__account-icon' alt='s'></img>
-                    </a>
+                    </Link>
                     </>
                 }
           </div>

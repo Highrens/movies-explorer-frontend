@@ -1,74 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { Form } from '../Form/Form';
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+
+const formConfig = {
+  name: {
+    required: "Вам необходимо имя",
+    minLength: { 
+      value: 3, 
+      message: "Слишком коротко, прости, Ян" },
+    maxLength: { value: 30,
+      message: "Слишком длинно" },
+  },
+  email: {
+    required: "Введите почту",
+    pattern: {
+      value: /\S+@\S+\.\S+/,
+      message: "Это не почта",
+    },
+  },
+  password: {
+    required: "Введите пароль",
+  },
+}
 
 export function Register(props) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [isErrors, setIsErrors] = useState(false);
 
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  const { register, handleSubmit, formState: { errors }, } = useForm({mode: "onChange" });
 
-  function handleRegisterSubmit (e){
-    e.preventDefault();
-    props.HandleRegisterSubmit({name, password, email})
-  }
+  //Смотрим есть ли ошибки
+  useEffect(() => {
+      setIsErrors(errors?.name || errors?.email || errors.password)
+  }, [errors.name, errors.email, errors.password]);
 
-  // useEffect (()=>{
-  //   props.handleHeaderLinkChange({
-  //     name: 'Войти',
-  //     link: '/sign-in'
-  //   });
-  // }, [])
+  function onSubmit (data){
+    props.onSubmit(data)
+  }
 
   return (
     <>
     <Form
     title={"Добро пожаловать!"}
-    onSubmit={handleRegisterSubmit}
+    onSubmit={handleSubmit(onSubmit)}
     >
         <label className="form__input-placeholder" htmlFor="register-name">Имя</label>
         <input
-          type="text"
           id="register-name"
-          placeholder=""
-          name="Name"
-          value={name || ''}
           className="form__input"
-          onChange={handleNameChange}
-          required
+          {...register("name", formConfig.name)}
         />
+        <h2 className="form__input-error">{errors?.na && errors.name.message} </h2>  
         <label className="form__input-placeholder" htmlFor="register-email">Email</label>
         <input
-          type="Email"
           id="register-email"
-          placeholder=""
-          name="Email"
-          value={email || ''}
           className="form__input"
-          onChange={handleEmailChange}
-          required
+          {...register("email", formConfig.email)}
         />
+         <h2 className="form__input-error">{errors?.email && errors.email.message} </h2>  
         <label className="form__input-placeholder" htmlFor="register-name">Пароль</label>
         <input
           type="password"
           id="register-password"
-          placeholder=""
-          name="password"
-          value={password || ''}
           className="form__input"
-          onChange={handlePasswordChange}
-          required
+          {...register("password", formConfig.password)}
         />
-        <button className="form__submit-button">Зарегистрироваться</button>
+        <h2 className="form__input-error">{errors?.password && errors.password.message} </h2>  
+        <h2 className="form__error">{props.error}</h2>
+        <button className="form__submit-button" disabled={isErrors}>Зарегистрироваться</button>
         <h2 className="form__sign-in">Уже зарегистрированы? <Link to={'/sign-in'} className="form__sign-in-link">Войти</Link></h2>
     </Form>
     </>
