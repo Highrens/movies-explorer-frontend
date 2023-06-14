@@ -214,6 +214,7 @@ function App() {
   function handleSearchSumbit(text) {
     if (text === "") {
       setMovieTip("Нужно ввести ключевое слово");
+      setShowMoreButton(false);
       return;
     }
     setMovieTip("");
