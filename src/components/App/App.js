@@ -343,13 +343,15 @@ function App() {
   function handleSignOut() {
     setLoggenIn(false);
 
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("SearchText");
-    localStorage.removeItem("Shorts");
+    localStorage.clear();
+
     setSavedMovies([]);
     setFiltredMovies([]);
     setSavedFiltredMovies([]);
+
     setSearchText("");
+    setMovieTip("")
+    setSavedMovieTip("")
     setShowMoreButton(false);
     navigate("/", { replace: true });
   }
