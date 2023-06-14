@@ -75,7 +75,7 @@
     transition: .5s;
 }
 
-.profile__edit:hover{
+.profile__edit:not(:disabled):hover{
     font-size: 16px;
     line-height: 21px;
 }

@@ -58,6 +58,7 @@ const isAnyFieldDifferent = watch('name') !==  User.name || watch('email') !== U
   useEffect(() => {
     console.log(errors);
     setIsErrors(errors?.name || errors?.email)
+    setIsErrors(!isAnyFieldDifferent);
   }, [errors.name, errors.email]);
 
   function onSubmit(data) {
