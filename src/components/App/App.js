@@ -264,6 +264,7 @@ function App() {
     setError("");
     editProfile({name, email})
       .then((res) => {
+          setError("Успешно обновленно!")
           setCurrentUser(res);
       })
       .catch((err) => {

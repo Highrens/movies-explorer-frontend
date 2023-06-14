@@ -96,6 +96,18 @@
     font-size: 13px;
     line-height: 16px;
 }
+.profile__edit-sucseed{
+    margin: 10px auto 10px;
+    min-height: 16px;
+    font-family: 'Inter', 'Arial';
+    font-style: normal;
+    text-align: center;
+
+    color: #34ee62;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+}
 
 .profile__logout{
     margin-top: 16px;
