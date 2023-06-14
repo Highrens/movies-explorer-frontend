@@ -2,8 +2,13 @@ import { Searchbar } from '../Searchbar/Searchbar';
 import { MoviesList } from '../MoviesList/MoviesList';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
+import { useEffect } from 'react';
 
 export function SavedMovies (props){
+
+  useEffect(()=>{
+    props.showAllSavedMovies();
+  }, [])
 
     function handleSearchSumbit(SearchText, searchType){
         props.handleSearchSumbit(SearchText, searchType);

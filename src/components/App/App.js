@@ -233,6 +233,11 @@ function App() {
     setShortsCheckbox(isChecked);
     saveShortsCheckbox(isChecked);
   }
+// Сохраненные фильмы
+  function showAllSavedMovies (){
+    setSavedMovieTip("");
+    setSavedFiltredMovies(savedMovies);
+  }
 
   function handleSavedMoviesSearchSubmit (text){
     // if (text === "") {
@@ -312,6 +317,7 @@ function App() {
       }).then((res) => {
         getMySavedMovies()
           .then((res) => {
+            setSavedFiltredMovies(res);
             setSavedMovies(res);
           })
           .catch((data) => console.log(data));
@@ -332,7 +338,7 @@ function App() {
     setSavedFiltredMovies([]);
     setSearchText('')
     setShowMoreButton(false);
-    navigate("/sign-in", { replace: true });
+    navigate("/", { replace: true });
   }
 
   return (
@@ -369,7 +375,7 @@ function App() {
                     showPreloader={isMoviesLoading}
                   />
                 ) : (
-                  <Navigate to="/sign-in" replace />
+                  <Navigate to="/" replace />
                 )
               }
             />
@@ -391,9 +397,11 @@ function App() {
                     showMoreButton={false}
                     showPreloader={isMoviesLoading}
                     savedMovies={savedMovies}
+                    //Показываем Все фильмы (при первом запуске)
+                    showAllSavedMovies={showAllSavedMovies}
                   />
                 ) : (
-                  <Navigate to="/sign-in" replace />
+                  <Navigate to="/" replace />
                 )
               }
             />
@@ -409,7 +417,7 @@ function App() {
                     err={error}
                   />
                 ) : (
-                  <Navigate to="/sign-in" replace />
+                  <Navigate to="/" replace />
                 )
               }
             />
@@ -421,7 +429,7 @@ function App() {
                   error={error}
                   />
                 ) : (
-                  <Navigate to="/movies" replace />
+                  <Navigate to="/" replace />
                 )
               }
             />
@@ -433,7 +441,7 @@ function App() {
                   error={error}
                    />
                 ) : (
-                  <Navigate to="/movies" replace />
+                  <Navigate to="/" replace />
                 )
               }
             />

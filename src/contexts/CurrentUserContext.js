@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export const CurrentUserContext = React.createContext();
 export const LoggenInContext = React.createContext();
