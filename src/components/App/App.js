@@ -28,6 +28,19 @@ import {
   CurrentUserContext,
   LoggenInContext,
 } from "../../contexts/CurrentUserContext";
+import {
+  showMoreBigPicture,
+  showMoreButtonDefault,
+  showMoreMediumPicture,
+  bigPicture,
+  mediumPicture,
+  movieOnPageAmountDefalut,
+  movieOnPageBigPicture,
+  movieOnPageMediumPicture,
+  movieOnPageSmallPicture,
+  shortDuration,
+  conflictErrorCode,
+} from "../../constants/constants";
 
 function App() {
   const navigate = useNavigate();
@@ -53,8 +66,8 @@ function App() {
   const [savedSearchText, setSavedSearchText] = useState("");
   //Кнопка "Еще"
   const [showMoreButton, setShowMoreButton] = useState(false);
-  const [MoreToShow, setMoreToShow] = useState(2);
-  const [moviesAmount, setMoviesAmount] = useState(5);
+  const [MoreToShow, setMoreToShow] = useState(showMoreButtonDefault);
+  const [moviesAmount, setMoviesAmount] = useState(movieOnPageAmountDefalut);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -69,7 +82,7 @@ function App() {
           }
         })
         .catch((data) => console.log(data));
-        getMySavedMovies()
+      getMySavedMovies()
         .then((res) => {
           setSavedMovies(res);
           setSavedFiltredMovies(res);
@@ -94,27 +107,26 @@ function App() {
   //Фильтрация фильмов
   useEffect(() => {
     if (localStorage.getItem("AllMovies")) {
-      setFiltredMovies(filterMovies())
-    } 
-  }, [searchText, shortsCheckbox,  moviesAmount]);
+      setFiltredMovies(filterMovies());
+    }
+  }, [searchText, shortsCheckbox, moviesAmount]);
 
   //Фильтрация сохраненных фильмов
   useEffect(() => {
-    if (window.location.pathname === "/saved-movies"){
+    if (window.location.pathname === "/saved-movies") {
       setSavedFiltredMovies(filterSaved());
     }
-
   }, [savedSearchText, savedShortsCheckbox, savedMovies]);
 
   function handleResize() {
-    if (window.innerWidth > 1153) {
-      setMoreToShow(3);
-      setMoviesAmount(12);
-    } else if (window.innerWidth > 725) {
-      setMoreToShow(2);
-      setMoviesAmount(8);
+    if (window.innerWidth > bigPicture) {
+      setMoreToShow(showMoreBigPicture);
+      setMoviesAmount(movieOnPageBigPicture);
+    } else if (window.innerWidth > mediumPicture) {
+      setMoreToShow(showMoreMediumPicture);
+      setMoviesAmount(movieOnPageMediumPicture);
     } else {
-      setMoviesAmount(5);
+      setMoviesAmount(movieOnPageSmallPicture);
     }
   }
 
@@ -133,19 +145,17 @@ function App() {
       }
       //Удаляем
       deleteMovie(movieToDelete._id)
-        .then((res) => { 
-          getMySavedMovies()
-          .then((res) => {
+        .then((res) => {
+          getMySavedMovies().then((res) => {
             setSavedMovies(res);
-          })
+          });
         })
         .catch((data) => console.log(data));
     } else {
       //Если фильм не сохранен - сохраняем
       saveMovie(movie)
         .then((res) => {
-          getMySavedMovies()
-          .then((res) => {
+          getMySavedMovies().then((res) => {
             setSavedMovies(res);
           });
         })
@@ -154,9 +164,11 @@ function App() {
   }
 
   //Поиск
-  function filterByCheckbox(filtredMovies, checkbox){
+  function filterByCheckbox(filtredMovies, checkbox) {
     if (!checkbox) {
-      return  filtredMovies = filtredMovies.filter((movie) => movie.duration > 40);
+      return (filtredMovies = filtredMovies.filter(
+        (movie) => movie.duration > shortDuration
+      ));
     }
     return filtredMovies;
   }
@@ -183,7 +195,7 @@ function App() {
     //localStorage.setItem("filtredMovies", JSON.stringify(filtredMovies));
     filtredMovies = filterByCheckbox(filtredMovies, shortsCheckbox);
 
-    if (filtredMovies.length === 0 ) setMovieTip("Ничего не найдено");
+    if (filtredMovies.length === 0) setMovieTip("Ничего не найдено");
 
     if (filtredMovies.length > moviesAmount) {
       setShowMoreButton(true);
@@ -200,11 +212,10 @@ function App() {
   }
 
   function handleSearchSumbit(text) {
-
     if (text === "") {
       setMovieTip("Нужно ввести ключевое слово");
       return;
-    };
+    }
     setMovieTip("");
     if (!localStorage.getItem("AllMovies")) {
       setIsMoviesLoading(true);
@@ -223,7 +234,7 @@ function App() {
         .finally(() => {
           setIsMoviesLoading(false);
         });
-    } else {         
+    } else {
       setSearchText(text);
       saveSearchText(text);
     }
@@ -233,13 +244,13 @@ function App() {
     setShortsCheckbox(isChecked);
     saveShortsCheckbox(isChecked);
   }
-// Сохраненные фильмы
-  function showAllSavedMovies (){
+  // Сохраненные фильмы
+  function showAllSavedMovies() {
     setSavedMovieTip("");
     setSavedFiltredMovies(savedMovies);
   }
 
-  function handleSavedMoviesSearchSubmit (text){
+  function handleSavedMoviesSearchSubmit(text) {
     // if (text === "") {
     //   setSavedMovieTip("Нужно ввести ключевое слово");
     //   return;
@@ -248,57 +259,58 @@ function App() {
     setSavedSearchText(text);
   }
 
-  function filterSaved(){
+  function filterSaved() {
     if (savedSearchText === "") {
       return savedMovies;
     }
     let filtredMovies = savedMovies.filter((movie) =>
-    movie.nameRU.toLocaleLowerCase().includes(savedSearchText.toLocaleLowerCase())
+      movie.nameRU
+        .toLocaleLowerCase()
+        .includes(savedSearchText.toLocaleLowerCase())
     );
     filtredMovies = filterByCheckbox(filtredMovies, savedShortsCheckbox);
-    if (filtredMovies.length === 0 ) setSavedMovieTip("Ничего не найдено");
+    if (filtredMovies.length === 0) setSavedMovieTip("Ничего не найдено");
     return filtredMovies;
   }
 
   function ChangeSavedCheckbox(isChecked) {
-   setSavedShortsCheckbox(isChecked);
+    setSavedShortsCheckbox(isChecked);
   }
-  
-  //Редактирование Аккаунта  
-  function EditProfile({name, email}) {
+
+  //Редактирование Аккаунта
+  function EditProfile({ name, email }) {
     setError("");
-    editProfile({name, email})
+    editProfile({ name, email })
       .then((res) => {
-          setError("Успешно обновленно!")
-          setCurrentUser(res);
+        setError("Успешно обновленно!");
+        setCurrentUser(res);
       })
       .catch((err) => {
-        if (err.includes(409)) {
-          setError("Пользователь с таким Email уже существует")
+        if (err.includes(conflictErrorCode)) {
+          setError("Пользователь с таким Email уже существует");
         } else {
-          setError("Что то пошло не так...")
+          setError("Что то пошло не так...");
         }
-      })
+      });
   }
   // Все что связанно с входом в Аккаунт
   function handleRegisterSubmit({ name, password, email }) {
-    setError("")
+    setError("");
     register(name, password, email)
       .then((res) => {
         handleLoginSubmit({ password, email });
       })
-      .catch((data) =>{
-        
-        if (data.includes(409)) {
-          setError("Пользователь с таким Email уже существует")
+      .catch((data) => {
+        if (data.includes(conflictErrorCode)) {
+          setError("Пользователь с таким Email уже существует");
         } else {
-          setError("Что то пошло не так...")
+          setError("Что то пошло не так...");
         }
-        console.log(data)
+        console.log(data);
       });
   }
   function handleLoginSubmit({ password, email }) {
-    setError("")
+    setError("");
     login(password, email)
       .then((res) => {
         if (res) {
@@ -314,7 +326,8 @@ function App() {
             setSearchText(localStorage.getItem("SearchText"));
           }
         }
-      }).then((res) => {
+      })
+      .then((res) => {
         getMySavedMovies()
           .then((res) => {
             setSavedFiltredMovies(res);
@@ -322,9 +335,9 @@ function App() {
           })
           .catch((data) => console.log(data));
       })
-      .catch((data) =>{
-        setError("Что то пошло не так...")
-        console.log(data)
+      .catch((data) => {
+        setError("Что то пошло не так...");
+        console.log(data);
       });
   }
   function handleSignOut() {
@@ -336,7 +349,7 @@ function App() {
     setSavedMovies([]);
     setFiltredMovies([]);
     setSavedFiltredMovies([]);
-    setSearchText('')
+    setSearchText("");
     setShowMoreButton(false);
     navigate("/", { replace: true });
   }
@@ -425,9 +438,7 @@ function App() {
               path="/sign-up"
               element={
                 !loggenIn ? (
-                  <Register onSubmit={handleRegisterSubmit} 
-                  error={error}
-                  />
+                  <Register onSubmit={handleRegisterSubmit} error={error} />
                 ) : (
                   <Navigate to="/" replace />
                 )
@@ -437,9 +448,7 @@ function App() {
               path="/sign-in"
               element={
                 !loggenIn ? (
-                  <Login onSubmit={handleLoginSubmit}
-                  error={error}
-                   />
+                  <Login onSubmit={handleLoginSubmit} error={error} />
                 ) : (
                   <Navigate to="/" replace />
                 )
