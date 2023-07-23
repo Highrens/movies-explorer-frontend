@@ -23,8 +23,8 @@ export function AboutMe(props) {
         <h3 className='about-me__portfolio-header'>Портфолио</h3>
         <ul className='about-me__portfolio-list'>
           <li>
-            <a className='about-me__portfolio-list-element' href='https://highrens.github.io/MeAndHer/' target="_blank"  rel="noreferrer">
-              <p className='about-me__portfolio-link' >Одностраничный сайт</p>
+            <a className='about-me__portfolio-list-element' href='https://forward-dungeon.ru/arena' target="_blank"  rel="noreferrer">
+              <p className='about-me__portfolio-link' >Многостарничный сайт</p>
               <p className='about-me__portfolio-link'>&#8599;</p>
             </a>
           </li>
