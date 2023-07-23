@@ -3,7 +3,7 @@ import './Morebutton.css'
 export function Morebutton (props) {
 
     function handleMoreButtonClick(){
-      props.OnClick();
+      props.HandleClick();
     }
 
     return (
